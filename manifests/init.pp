@@ -36,6 +36,7 @@ class mcollective (
   $middleware_ssl_fallback   = false,
   $middleware_admin_user     = 'admin',
   $middleware_admin_password = 'secret',
+  $middleware_ssl_auth       = false,
 
   # middleware connector tweaking
   $rabbitmq_vhost = '/mcollective',

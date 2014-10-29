@@ -14,12 +14,14 @@ define mcollective::common::config::connector::rabbitmq::hosts_iteration {
     value => $port,
   }
 
-  mcollective::common::setting { "plugin.rabbitmq.pool.${name}.user":
-    value => $mcollective::middleware_user,
-  }
+  if $mcollective::middleware_ssl_auth == false {
+    mcollective::common::setting { "plugin.rabbitmq.pool.${name}.user":
+      value => $mcollective::middleware_user,
+    }
 
-  mcollective::common::setting { "plugin.rabbitmq.pool.${name}.password":
-    value => $mcollective::middleware_password,
+    mcollective::common::setting { "plugin.rabbitmq.pool.${name}.password":
+      value => $mcollective::middleware_password,
+    }
   }
 
   if $mcollective::middleware_ssl {
